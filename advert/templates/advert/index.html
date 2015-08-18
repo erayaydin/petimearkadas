@@ -3,8 +3,16 @@
 {% block title %}İlanlar{% endblock %}
 
 {% block content %}
-{% for advert in adverts %}
-<h1>{{ advert.profile.petName }} Arkadaş Arıyor</h1>
-<p>{{ advert.message }}</p>
-{% endfor %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="list-group">
+          {% for advert in adverts %}
+          <a href="#" class="list-group-item">
+            <h4 class="list-group-item-heading">{{ advert.profile.petName }} Arkadaş Arıyor!</h4>
+            <p class="list-group-item-text">{{ advert.message }}</p>
+          </a>
+          {% endfor %}
+        </div>
+    </div>
+</div>
 {% endblock %}

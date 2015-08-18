@@ -1,10 +1,48 @@
-Evcil Hayvanın Adı: {{ advert.profile.petName }}<br />
-Evcil Hayvanın Yaşı: {{ advert.profile.petAge }}<br />
-Evcil Hayvanın İlişki Durumu: {{ advert.profile.petRelation.name }}<br />
-Hastalık Durumu: {% if advert.profile.petSick %} Hasta {% else %} Sağlıklı {% endif %}<br />
-Cinsiyeti: {% if advert.profile.petSex %} Dişi {% else %} Erkek {% endif %}<br />
-Evcil Hayvanın Sahibi: {{ advert.profile.user.username }}<br />
-Evcil Hayvan Türü: {{ advert.profile.petType.name }}<br />
-<hr />
-Mesaj:<br />
-{{ advert.message }}
+{% extends "base.html" %}
+
+{% block title %}İlanlar{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-3 advert-sidebar">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Evcil Hayvan</h3>
+            </div>
+            <div class="panel-body">
+                <div class="text-center">
+                    <h3>{{ advert.profile.petName }}</h3>
+                    <img src="http://placehold.it/128x128" class="img-circle img-responsive img-center" alt="{{ advert.profile.petName }}" />
+                </div>
+                <br />
+                    <ul class="list-group">
+                      <li class="list-group-item">Cinsiyet: {% if advert.profile.petSex %} Dişi {% else %} Erkek {% endif %}</li>
+                      <li class="list-group-item">Tür: {{ advert.profile.petType.name }}</li>
+                      <li class="list-group-item">Yaş: {{ advert.profile.petAge }}</li>
+                      <li class="list-group-item">İlişki Durumu: {{ advert.profile.petRelation.name}}</li>
+                      {% if advert.profile.petSick %}
+                      <li class="list-group-item list-group-item-danger">Hastalık Durumu: Hasta</li>
+                      {% else %}
+                      <li class="list-group-item list-group-item-success">Hastalık Durumu: Sağlıklı</li>
+                      {% endif %}
+                    </ul>
+            </div>
+        </div>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Sahibi</h3>
+            </div>
+            <div class="panel-body">
+                <h3 class="text-center">{{ advert.profile.user.username }}</h3>
+                <div class="text-center">
+                    <img src="http://placehold.it/128x128" class="img-circle img-responsive img-center" alt="{{ advert.profile.user.username }}" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="well">{{ advert.message }}</div>
+    </div>
+</div>
+{% endblock %}
