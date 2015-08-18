@@ -1,0 +1,10 @@
+Evcil Hayvanın Adı: {{ advert.profile.petName }}<br />
+Evcil Hayvanın Yaşı: {{ advert.profile.petAge }}<br />
+Evcil Hayvanın İlişki Durumu: {{ advert.profile.petRelation.name }}<br />
+Hastalık Durumu: {% if advert.profile.petSick %} Hasta {% else %} Sağlıklı {% endif %}<br />
+Cinsiyeti: {% if advert.profile.petSex %} Dişi {% else %} Erkek {% endif %}<br />
+Evcil Hayvanın Sahibi: {{ advert.profile.user.username }}<br />
+Evcil Hayvan Türü: {{ advert.profile.petType.name }}<br />
+<hr />
+Mesaj:<br />
+{{ advert.message }}
