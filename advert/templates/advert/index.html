@@ -1,4 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %}İlanlar{% endblock %}
+
+{% block content %}
 {% for advert in adverts %}
 <h1>{{ advert.profile.petName }} Arkadaş Arıyor</h1>
 <p>{{ advert.message }}</p>
 {% endfor %}
+{% endblock %}
