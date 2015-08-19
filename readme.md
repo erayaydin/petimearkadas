@@ -4,6 +4,7 @@ Petime Arkadaş
 ### Packages
 
 - Django(1.8.3)
+- Django Widget Tweaks (1.4.1)
 
 ### Setting Up
 
