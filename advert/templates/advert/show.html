@@ -43,7 +43,7 @@
     </div>
     <div class="col-md-9">
         <div class="well">{{ advert.message }}</div>
-        <div class="alert alert-danger">Mesaj yazmak için giriş yapmalı veya kayıt olmalısınız.</div>
+        {% if user.is_authenticated %}
         <div class="well">
             <h4>Mesaj Yaz</h4>
             <form>
@@ -55,6 +55,9 @@
                 </div>
             </form>
         </div>
+        {% else %}
+        <div class="alert alert-danger">Mesaj yazmak için <a href="{% url 'adv_login' %}">giriş yapmalı</a> veya <a href="{% url 'adv_register' %}">kayıt</a> olmalısınız.</div>
+        {% endif %}
     </div>
 </div>
 {% endblock %}
