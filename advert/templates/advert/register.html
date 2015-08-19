@@ -18,19 +18,19 @@
                     {% load widget_tweaks %}
                     {{ form.non_field_errors }}
                         <div class="form-group {% if form.username.errors %} has-error {% endif %}">
-                            {{ form.username.errors }}
                             <label for="{{ form.username.id_for_label }}" class="control-label">Kullanıcı Adı</label>
                             {{ form.username|add_class:"form-control" }}
+                            <span class="help-block">{{ form.username.errors }}</span>
                         </div>
                         <div class="form-group {% if form.password1.errors %} has-error {% endif %}">
-                            {{ form.password1.errors }}
                             <label for="{{ form.password1.id_for_label }}" class="control-label">Şifre</label>
                             {{ form.password1|add_class:"form-control" }}
+                            <span class="help-block">{{ form.password1.errors }}</span>
                         </div>
                         <div class="form-group {% if form.password2.errors %} has-error {% endif %}">
-                            {{ form.password2.errors }}
                             <label for="{{ form.password2.id_for_label }}" class="control-label">Şifre Tekrarı</label>
                             {{ form.password2|add_class:"form-control" }}
+                            <span class="help-block">{{ form.password2.errors }}</span>
                         </div>
                 </div>
                 <div class="panel-footer">
