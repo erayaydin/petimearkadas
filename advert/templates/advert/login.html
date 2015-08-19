@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Giriş Yap{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        {% if form.errors %}
+            <div class="alert alert-danger"><p>Your username and password didn't match. Please try again.</p></div>
+        {% endif %}
+        <form method="POST">
+            {% csrf_token %}
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Giriş Yap</h3>
+                </div>
+                {% load widget_tweaks %}
+                <div class="panel-body">
+                        <div class="form-group">
+                            <label for="id_username" class="control-label">Kullanıcı Adı</label>
+                            {{ form.username|add_class:"form-control" }}
+                        </div>
+                        <div class="form-group">
+                            <label for="id_password" class="control-label">Şifre</label>
+                            {{ form.password|add_class:"form-control" }}
+                        </div>
+                    {% if next %}
+                    <input type="hidden" name="next" value="{{ next }}" />
+                    {% else %}
+                    <input type="hidden" name="next" value="/" />
+                    {% endif %}
+                </div>
+                <div class="panel-footer">
+                    <input type="submit" class="btn btn-primary btn-block" value="Giriş Yap" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

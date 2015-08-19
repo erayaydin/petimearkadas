@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Kayıt Ol{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        {% if form.errors %}
+            <div class="alert alert-danger"><p>Lütfen formu kontrol ediniz.</p></div>
+        {% endif %}
+        <form method="post">
+            {% csrf_token %}
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Kayıt Ol</h3>
+                </div>
+                <div class="panel-body">
+                    {% load widget_tweaks %}
+                    {{ form.non_field_errors }}
+                        <div class="form-group {% if form.username.errors %} has-error {% endif %}">
+                            {{ form.username.errors }}
+                            <label for="{{ form.username.id_for_label }}" class="control-label">Kullanıcı Adı</label>
+                            {{ form.username|add_class:"form-control" }}
+                        </div>
+                        <div class="form-group {% if form.password1.errors %} has-error {% endif %}">
+                            {{ form.password1.errors }}
+                            <label for="{{ form.password1.id_for_label }}" class="control-label">Şifre</label>
+                            {{ form.password1|add_class:"form-control" }}
+                        </div>
+                        <div class="form-group {% if form.password2.errors %} has-error {% endif %}">
+                            {{ form.password2.errors }}
+                            <label for="{{ form.password2.id_for_label }}" class="control-label">Şifre Tekrarı</label>
+                            {{ form.password2|add_class:"form-control" }}
+                        </div>
+                </div>
+                <div class="panel-footer">
+                    <input type="submit" class="btn btn-primary btn-block" value="Kayıt Ol" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

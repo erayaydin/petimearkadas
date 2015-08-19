@@ -43,6 +43,18 @@
     </div>
     <div class="col-md-9">
         <div class="well">{{ advert.message }}</div>
+        <div class="alert alert-danger">Mesaj yazmak için giriş yapmalı veya kayıt olmalısınız.</div>
+        <div class="well">
+            <h4>Mesaj Yaz</h4>
+            <form>
+                <div class="form-group">
+                    <textarea class="form-control" id="message" name="message"></textarea>
+                </div>
+                <div class="text-right">
+                    <input class="btn btn-primary" value="Yayınla">
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 {% endblock %}

@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}{{ user.username }} Profil Sayfası{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-3">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{ user.username }}</h3>
+            </div>
+            <div class="panel-body">
+                <div class="text-center">
+                    <img src="http://placehold.it/128x128" class="img-circle img-responsive img-center" alt="{{ advert.profile.user.username }}" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="row">
+            <h4 class="page-header nomargintop">Evcil Hayvanları</h4>
+            {% for profile in profiles %}
+            <div class="col-md-4">
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">{{ profile.petName }}</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="text-center">
+                            <img src="http://placehold.it/128x128" class="img-circle img-responsive img-center" alt="{{ profile.petName }}" />
+                        </div>
+                        <ul class="list-group">
+                          <li class="list-group-item">Cinsiyet: {% if profile.petSex %} Dişi {% else %} Erkek {% endif %}</li>
+                          <li class="list-group-item">Tür: {{ profile.petType.name }}</li>
+                          <li class="list-group-item">Yaş: {{ profile.petAge }}</li>
+                          <li class="list-group-item">İlişki Durumu: {{ profile.petRelation.name}}</li>
+                          {% if profile.petSick %}
+                          <li class="list-group-item list-group-item-danger">Hastalık Durumu: Hasta</li>
+                          {% else %}
+                          <li class="list-group-item list-group-item-success">Hastalık Durumu: Sağlıklı</li>
+                          {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <br />
+        <div class="row">
+            <h4 class="page-header nomargintop">Son İlanları</h4>
+            <div class="col-md-12">
+                 <div class="list-group">
+                  {% for advert in adverts %}
+                  <a href="#" class="list-group-item">
+                    <h4 class="list-group-item-heading">{{ advert.profile.petName }} Arkadaş Arıyor!</h4>
+                    <p class="list-group-item-text">{{ advert.message }}</p>
+                  </a>
+                  {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
