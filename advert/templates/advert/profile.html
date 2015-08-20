@@ -13,12 +13,17 @@
                 <div class="text-center">
                     <img src="http://placehold.it/128x128" class="img-circle img-responsive img-center" alt="{{ advert.profile.user.username }}" />
                 </div>
+                {% if request.user.id == user.id %}
+                <br />
+                <a href="{% url 'adv_profileEdit' user.username %}" class="btn btn-warning btn-block">Profili Düzenle</a>
+                <a href="{% url 'adv_passwordChange' %}" class="btn btn-danger btn-block">Şifre Değiştir</a>
+                {% endif %}
             </div>
         </div>
     </div>
     <div class="col-md-9">
         <div class="row">
-            <h4 class="page-header nomargintop">Evcil Hayvanları</h4>
+            <div class="col-md-12"><h4 class="page-header nomargintop">Evcil Hayvanları</h4></div>
             {% for profile in profiles %}
             <div class="col-md-4">
                 <div class="panel panel-success">
@@ -29,6 +34,7 @@
                         <div class="text-center">
                             <img src="http://placehold.it/128x128" class="img-circle img-responsive img-center" alt="{{ profile.petName }}" />
                         </div>
+                        <br />
                         <ul class="list-group">
                           <li class="list-group-item">Cinsiyet: {% if profile.petSex %} Dişi {% else %} Erkek {% endif %}</li>
                           <li class="list-group-item">Tür: {{ profile.petType.name }}</li>
@@ -40,18 +46,22 @@
                           <li class="list-group-item list-group-item-success">Hastalık Durumu: Sağlıklı</li>
                           {% endif %}
                         </ul>
+                        <a href="{% url 'adv_petEdit' profile.id %}" class="btn btn-warning btn-block">Düzenle</a>
                     </div>
                 </div>
             </div>
             {% endfor %}
+            <div class="col-md-4">
+                <a href="{% url 'adv_petCreate' %}" class="btn btn-success btn-block">Evcil Hayvan Ekle</a>
+            </div>
         </div>
         <br />
         <div class="row">
-            <h4 class="page-header nomargintop">Son İlanları</h4>
+            <div class="col-md-12"><h4 class="page-header nomargintop">Son İlanları</h4></div>
             <div class="col-md-12">
                  <div class="list-group">
                   {% for advert in adverts %}
-                  <a href="#" class="list-group-item">
+                  <a href="{% url 'adv_show' advert.id %}" class="list-group-item">
                     <h4 class="list-group-item-heading">{{ advert.profile.petName }} Arkadaş Arıyor!</h4>
                     <p class="list-group-item-text">{{ advert.message }}</p>
                   </a>

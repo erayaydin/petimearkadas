@@ -5,6 +5,8 @@
 {% block content %}
 <div class="row">
     <div class="col-md-12">
+        <a href="{% url 'adv_create' %}" class="btn btn-success btn-block">İlan Ekle</a>
+        <br />
         <div class="list-group">
           {% for advert in adverts %}
           <a href="{% url 'adv_show' advert.id %}" class="list-group-item">

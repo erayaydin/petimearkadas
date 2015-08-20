@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}İlan Ekle{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <form method="post">
+            {% csrf_token %}
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">İlan Ver</h3>
+                </div>
+                {% load widget_tweaks %}
+                <div class="panel-body">
+                        <div class="form-group {% if form.profile.errors %} has-error {% endif %}">
+                            <label for="{{ form.profile.id_for_label }}" class="control-label">Evcil Hayvan</label>
+                            {{ form.profile|add_class:"form-control" }}
+                            <span class="help-block">{{ form.profile.errors }}</span>
+                        </div>
+                        <div class="form-group {% if form.message.errors %} has-error {% endif %}">
+                            <label for="{{ form.message.id_for_label }}" class="control-label">Mesaj</label>
+                            {{ form.message|add_class:"form-control" }}
+                            <span class="help-block">{{ form.message.errors }}</span>
+                        </div>
+                    {% if next %}
+                    <input type="hidden" name="next" value="{{ next }}" />
+                    {% else %}
+                    <input type="hidden" name="next" value="/" />
+                    {% endif %}
+                </div>
+                <div class="panel-footer">
+                    <input type="submit" class="btn btn-primary btn-block" value="İlanı Yayınla" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

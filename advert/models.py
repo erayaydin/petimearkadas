@@ -14,13 +14,16 @@ class PetRelation(models.Model):
 		return self.name
 
 class Profile(models.Model):
+	GENDERS = ((False, 'Erkek'),(True, 'Dişi'))
+	SICK = ((False, "Sağlıklı"), (True, "Hasta"))
+
 	user    = models.ForeignKey(User)
 	petName = models.CharField(max_length=255)
 	petAge  = models.IntegerField()
 	petRelation = models.ForeignKey(PetRelation)
 	petType = models.ForeignKey(PetType)
-	petSick = models.BooleanField()
-	petSex = models.BooleanField(default=0)
+	petSick = models.BooleanField(default=0, choices=SICK)
+	petSex = models.BooleanField(default=0, choices=GENDERS)
 
 	def __str__(self):
 		return self.petName

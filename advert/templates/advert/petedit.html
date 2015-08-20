@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}{{ pet.petName }} Evcil Hayvanını Düzenle{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <form method="post">
+            {% csrf_token %}
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{ pet.petName }} Evcil Hayvanını Düzenle</h3>
+                </div>
+                {% load widget_tweaks %}
+                <div class="panel-body">
+                    <div class="form-group {% if form.petType.errors %} has-error {% endif %}">
+                        <label for="{{ form.petType.id_for_label }}" class="control-label">Tür</label>
+                        {{ form.petType|add_class:"form-control" }}
+                        <span class="help-block">{{ form.petType.errors }}</span>
+                    </div>
+                    <div class="form-group {% if form.petName.errors %} has-error {% endif %}">
+                        <label for="{{ form.petName.id_for_label }}" class="control-label">Adı</label>
+                        {{ form.petName|add_class:"form-control" }}
+                        <span class="help-block">{{ form.petName.errors }}</span>
+                    </div>
+                    <div class="form-group {% if form.petAge.errors %} has-error {% endif %}">
+                        <label for="{{ form.petAge.id_for_label }}" class="control-label">Yaşı</label>
+                        {{ form.petAge|add_class:"form-control" }}
+                        <span class="help-block">{{ form.petAge.errors }}</span>
+                    </div>
+                    <div class="form-group {% if form.petRelation.errors %} has-error {% endif %}">
+                        <label for="{{ form.petRelation.id_for_label }}" class="control-label">İlişki Durumu</label>
+                        {{ form.petRelation|add_class:"form-control" }}
+                        <span class="help-block">{{ form.petRelation.errors }}</span>
+                    </div>
+                    <div class="form-group {% if form.petSick.errors %} has-error {% endif %}">
+                        <label for="{{ form.petSick.id_for_label }}" class="control-label">Sağlık Durumu</label>
+                        {{ form.petSick|add_class:"form-control" }}
+                        <span class="help-block">{{ form.petSick.errors }}</span>
+                    </div>
+                    <div class="form-group {% if form.petSex.errors %} has-error {% endif %}">
+                        <label for="{{ form.petSex.id_for_label }}" class="control-label">Cinsiyet</label>
+                        {{ form.petSex|add_class:"form-control" }}
+                        <span class="help-block">{{ form.petSex.errors }}</span>
+                    </div>
+                    {% if next %}
+                    <input type="hidden" name="next" value="{{ next }}" />
+                    {% else %}
+                    <input type="hidden" name="next" value="/" />
+                    {% endif %}
+                </div>
+                <div class="panel-footer">
+                    <input type="submit" class="btn btn-primary btn-block" value="Güncelle" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

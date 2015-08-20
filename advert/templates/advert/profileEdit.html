@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Profilini Düzenle{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <form method="post">
+            {% csrf_token %}
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Profilini Düzenle</h3>
+                </div>
+                {% load widget_tweaks %}
+                <div class="panel-body">
+                    <div class="form-group {% if form.username.errors %} has-error {% endif %}">
+                        <label for="{{ form.username.id_for_label }}" class="control-label">Kullanıcı Adı</label>
+                        {{ form.username|add_class:"form-control" }}
+                        <span class="help-block">{{ form.username.errors }}</span>
+                    </div>
+                    {% if next %}
+                    <input type="hidden" name="next" value="{{ next }}" />
+                    {% else %}
+                    <input type="hidden" name="next" value="/" />
+                    {% endif %}
+                </div>
+                <div class="panel-footer">
+                    <input type="submit" class="btn btn-primary btn-block" value="Güncelle" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
