@@ -1,6 +1,10 @@
 Petime Arkadaş
 ==============
 
+### Releases
+
+- [v0.1-alpha](https://github.com/petimearkadas/petimearkadas/releases/tag/v0.1-alpha) **Pre-Release** **Unstable**
+
 ### Packages
 
 - Django(1.8.3)
