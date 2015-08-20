@@ -3,6 +3,7 @@
 {% block title %}{{ user.username }} Profil Sayfası{% endblock %}
 
 {% block content %}
+{% load gravatar %}
 <div class="row">
     <div class="col-md-3">
         <div class="panel panel-primary">
@@ -11,7 +12,7 @@
             </div>
             <div class="panel-body">
                 <div class="text-center">
-                    <img src="http://placehold.it/128x128" class="img-circle img-responsive img-center" alt="{{ advert.profile.user.username }}" />
+                    <img src="{% gravatar_url user.email 128 %}" class="img-circle img-responsive img-center" alt="{{ advert.profile.user.username }}" />
                 </div>
                 {% if request.user.id == user.id %}
                 <br />
@@ -32,7 +33,9 @@
                     </div>
                     <div class="panel-body">
                         <div class="text-center">
-                            <img src="http://placehold.it/128x128" class="img-circle img-responsive img-center" alt="{{ profile.petName }}" />
+                            {% if profile.petImage %}
+                            <img src="{{ profile.petImage.url }}" class="img-circle img-responsive img-center" alt="{{ profile.petName }}" />
+                            {% endif %}
                         </div>
                         <br />
                         <ul class="list-group">

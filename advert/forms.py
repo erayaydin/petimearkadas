@@ -25,7 +25,7 @@ class PetCreateForm(forms.ModelForm):
 
     class Meta:
         model = Profile
-        fields = ['petName', 'petAge', 'petRelation', 'petType', 'petSick', 'petSex']
+        fields = ['petName', 'petAge', 'petRelation', 'petType', 'petSick', 'petSex', 'petImage']
 
     def clean(self):
         super(PetCreateForm, self).clean()

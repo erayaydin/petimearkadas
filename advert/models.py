@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.files.storage import FileSystemStorage
 
 class PetType(models.Model):
 	name = models.CharField(max_length=255)
@@ -13,6 +14,8 @@ class PetRelation(models.Model):
 	def __str__(self):
 		return self.name
 
+fs = FileSystemStorage(location='public/media')
+
 class Profile(models.Model):
 	GENDERS = ((False, 'Erkek'),(True, 'Dişi'))
 	SICK = ((False, "Sağlıklı"), (True, "Hasta"))
@@ -24,6 +27,7 @@ class Profile(models.Model):
 	petType = models.ForeignKey(PetType)
 	petSick = models.BooleanField(default=0, choices=SICK)
 	petSex = models.BooleanField(default=0, choices=GENDERS)
+	petImage = models.ImageField(null=True, blank=True, upload_to='pets', storage=fs)
 
 	def __str__(self):
 		return self.petName

@@ -78,6 +78,8 @@ def petCreate(request):
         if form.is_valid():
             new_pet = form.save(commit=False)
             new_pet.user = request.user
+            if 'petImage' in request.FILES:
+                new_pet.petImage = request.FILES["petImage"]
             new_pet.save()
             return HttpResponseRedirect('/')
     else:
@@ -92,7 +94,10 @@ def petEdit(request, pet_id):
         form = PetCreateForm(request.user, request.POST, instance=pet)
 
         if form.is_valid():
-            new_pet = form.save()
+            new_pet = form.save(commit=False)
+            if 'petImage' in request.FILES:
+                new_pet.petImage = request.FILES["petImage"]
+            new_pet.save()
             return HttpResponseRedirect(reverse('adv_petEdit', args=[new_pet.id]))
     else:
         form = PetCreateForm(request.user, instance=pet)

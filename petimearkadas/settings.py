@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'advert',
     'widget_tweaks',
+    'django_gravatar',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -106,3 +107,5 @@ STATIC_URL = '/public/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "public"),
 )
+
+MEDIA_URL = '/public/media/'
