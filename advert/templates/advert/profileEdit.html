@@ -18,6 +18,11 @@
                         {{ form.username|add_class:"form-control" }}
                         <span class="help-block">{{ form.username.errors }}</span>
                     </div>
+                    <div class="form-group {% if form.email.errors %} has-error {% endif %}">
+                        <label for="{{ form.email.id_for_label }}" class="control-label">E-Posta Adresi</label>
+                        {{ form.email|add_class:"form-control" }}
+                        <span class="help-block">{{ form.email.errors }}</span>
+                    </div>
                     {% if next %}
                     <input type="hidden" name="next" value="{{ next }}" />
                     {% else %}
