@@ -5,6 +5,8 @@ Petime Arkadaş
 
 - Django(1.8.3)
 - Django Widget Tweaks (1.4.1)
+- Pillow (2.9.0)
+- Django Gravatar2 (1.3.0)
 
 ### Setting Up
 
